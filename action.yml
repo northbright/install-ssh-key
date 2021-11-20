@@ -1,0 +1,25 @@
+name: "Install SSH Key"
+description: "Install SSH private key in ~/.ssh"
+author: "Frank Xu"
+inputs:
+    key:
+        description: "SSH private key"
+        required: true
+    name:
+        description: "SSH private key file name(default: id_rsa)"
+        required: false
+        default: "id_rsa"
+    host:
+        description: "Host to SSH login"
+        required: true
+        default: ""
+outputs:
+    key_file_name:
+        description: "SSH private key file name"
+        value: ${{ steps.show-key-file-name.outputs.key-file-name }}
+runs:
+  using: "composite"
+  steps:
+      - id: show-key-file-name
+        run: echo Hello World & echo "::set-output name=key-file-name::$(echo ${{ inputs.name }})"
+        shell: bash
