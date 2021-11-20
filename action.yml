@@ -23,3 +23,6 @@ runs:
       - id: show-key-file-name
         run: echo Hello World & echo "::set-output name=key-file-name::$(echo ${{ inputs.name }})"
         shell: bash
+      - id: show-ssh-config
+        run: ls -l ~/.ssh/config && cat ~/.ssh/config
+        shell: bash
