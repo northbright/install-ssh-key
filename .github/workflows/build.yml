@@ -10,7 +10,7 @@ jobs:
     steps:
         - uses: actions/checkout@v2
         - id: show_private_key_file_name
-          uses: northbright/install-ssh-key@v0.1
+          uses: ./.
           with:
               key: "fake key"
         - run: echo key file name ${{ steps.show_private_key_file_name.outputs.key_file_name }}
